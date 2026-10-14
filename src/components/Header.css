@@ -1,0 +1,203 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: var(--z-header);
+  padding: 1.25rem 0;
+  transition: background var(--duration-normal) var(--ease-out),
+              backdrop-filter var(--duration-normal) var(--ease-out),
+              padding var(--duration-normal) var(--ease-out);
+}
+
+.header--scrolled {
+  background: rgba(14, 14, 14, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.75rem 0;
+}
+
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.9;
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 1.75rem;
+  letter-spacing: -0.02em;
+  position: relative;
+  z-index: calc(var(--z-menu) + 1);
+  transition: color var(--duration-fast);
+}
+
+.header__logo-last {
+  margin-left: 1.5rem;
+}
+
+@media (min-width: 832px) {
+  .header__logo {
+    font-size: 2rem;
+  }
+  .header {
+    padding: 1.75rem 0;
+  }
+  .header--scrolled {
+    padding: 1rem 0;
+  }
+}
+
+/* Desktop nav */
+.header__nav--desktop {
+  display: none;
+  gap: 2rem;
+}
+
+@media (min-width: 832px) {
+  .header__nav--desktop {
+    display: flex;
+  }
+}
+
+.header__nav-link {
+  font-size: 0.875rem;
+  font-weight: 400;
+  text-transform: capitalize;
+  position: relative;
+  padding-bottom: 2px;
+  transition: color var(--duration-fast);
+}
+
+.header__nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 1px;
+  background: var(--color-text);
+  transition: width 0.3s var(--ease-out);
+}
+
+.header__nav-link:hover::after {
+  width: 100%;
+}
+
+/* Hamburger button */
+.header__menu-btn {
+  position: relative;
+  z-index: calc(var(--z-menu) + 1);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 832px) {
+  .header__menu-btn {
+    display: none;
+  }
+}
+
+.header__hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 24px;
+}
+
+.header__hamburger span {
+  display: block;
+  height: 1.5px;
+  background: var(--color-text);
+  transition: transform 0.35s var(--ease-out), opacity 0.25s;
+  transform-origin: center;
+}
+
+.header__hamburger--open span:first-child {
+  transform: translateY(3.75px) rotate(45deg);
+}
+
+.header__hamburger--open span:last-child {
+  transform: translateY(-3.75px) rotate(-45deg);
+}
+
+/* Mobile menu overlay */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-menu);
+  background: var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s var(--ease-out);
+}
+
+.mobile-menu--open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-menu__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  text-align: left;
+  width: 80%;
+}
+
+.mobile-menu__link {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 8vw, 4rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-border);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+}
+
+.mobile-menu--open .mobile-menu__link {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-menu__number {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.mobile-menu__footer {
+  margin-top: 3rem;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+}
+
+.mobile-menu--open .mobile-menu__footer {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-menu__footer a:hover {
+  color: var(--color-text);
+}

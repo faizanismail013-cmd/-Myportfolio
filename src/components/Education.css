@@ -1,0 +1,107 @@
+.education {
+  padding: var(--space-6xl) 0;
+}
+
+.education__content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4xl);
+}
+
+@media (min-width: 832px) {
+  .education__content {
+    grid-template-columns: 1.2fr 1fr;
+    gap: var(--space-5xl);
+  }
+}
+
+.education__main {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+
+.education__content.visible .education__main {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.education__degree-block {
+  margin-bottom: var(--space-2xl);
+}
+
+.education__degree {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.education__field {
+  font-size: 1.1rem;
+  color: var(--color-accent);
+  margin-top: 0.5rem;
+  font-weight: 400;
+}
+
+.education__institution {
+  font-size: 1.1rem;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.education__location {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-top: 0.25rem;
+}
+
+/* Coursework */
+.education__coursework {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-xl);
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.7s var(--ease-out) 0.2s, transform 0.7s var(--ease-out) 0.2s;
+}
+
+.education__content.visible .education__coursework {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.education__coursework-title {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  margin-bottom: var(--space-lg);
+}
+
+.education__coursework-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.education__course {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  transition: border-color var(--duration-fast), color var(--duration-fast);
+}
+
+.education__content.visible .education__course {
+  animation: skillFadeIn 0.4s var(--ease-out) forwards;
+  opacity: 0;
+}
+
+.education__course:hover {
+  border-color: var(--color-border-hover);
+  color: var(--color-text);
+}

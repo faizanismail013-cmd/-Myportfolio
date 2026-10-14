@@ -1,0 +1,221 @@
+.projects {
+  padding: var(--space-6xl) 0;
+}
+
+.projects__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5xl);
+}
+
+/* Project Card */
+.project-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+
+.project-card--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (min-width: 832px) {
+  .project-card {
+    grid-template-columns: 1.1fr 1fr;
+    gap: var(--space-4xl);
+    align-items: center;
+  }
+
+  .project-card:nth-child(even) {
+    direction: rtl;
+  }
+
+  .project-card:nth-child(even) > * {
+    direction: ltr;
+  }
+}
+
+/* Visual Preview */
+.project-card__visual {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+  border: 1px solid var(--color-border);
+}
+
+.project-card__preview {
+  aspect-ratio: 16 / 10;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-card) !important;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.project-card:hover .project-card__preview {
+  transform: scale(1.01);
+}
+
+.project-card__preview-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.project-card__preview-number {
+  font-family: var(--font-marquee, 'Bebas Neue', sans-serif);
+  font-size: 6.5rem;
+  font-weight: 400;
+  color: var(--color-text);
+  opacity: 0.08;
+  line-height: 1;
+}
+
+.project-card__preview-title {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text);
+}
+
+.project-card__preview-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.project-card__preview-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--color-white);
+  background: #2a2a2a !important;
+  border: 1px solid var(--color-border);
+  opacity: 0.9;
+}
+
+.project-card__preview-grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  opacity: 0.04;
+  z-index: 1;
+}
+
+.project-card__preview-cell {
+  border: 1px solid var(--color-text);
+}
+
+/* Info */
+.project-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.project-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.project-card__number {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: var(--color-text-dim);
+}
+
+.project-card__tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: flex-end;
+  max-width: 65%;
+}
+
+.project-card__tech {
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+.project-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.project-card__description {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+.project-card__highlight {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  padding: 0.75rem 1rem;
+  background: var(--color-bg-card);
+  border-radius: 0;
+  border-left: 2px solid var(--color-text);
+}
+
+.project-card__highlight svg {
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.project-card__action {
+  margin-top: 0.5rem;
+}
+
+.project-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.25rem;
+  transition: border-color var(--duration-fast), color var(--duration-fast);
+}
+
+.project-card__link:hover {
+  border-color: var(--color-text);
+}
+
+.project-card__coming-soon {
+  font-size: 0.8rem;
+  color: var(--color-text-dim);
+  font-style: italic;
+}
