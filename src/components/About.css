@@ -5,20 +5,20 @@
 .about__content {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-4xl);
+  gap: var(--space-2xl);
 }
 
 @media (min-width: 832px) {
   .about__content {
     grid-template-columns: 1.4fr 1fr;
-    gap: var(--space-5xl);
+    gap: var(--space-3xl);
   }
 }
 
 .about__text {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xl);
+  gap: var(--space-md);
 }
 
 .about__paragraph {
